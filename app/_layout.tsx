@@ -1,6 +1,12 @@
 import { Slot, SplashScreen } from "expo-router";
 import { useEffect } from "react";
-import { SafeAreaView, StatusBar, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  View,
+} from "react-native";
 import { AuthProvider } from "../contexts/auth-context";
 import "../global.css";
 
@@ -30,18 +36,23 @@ export default function RootLayout() {
 
   return (
     <SafeAreaView className="flex-1">
-      <View
-        className="flex-1 px-4 android:pb-4"
-        style={{
-          paddingTop: StatusBar.currentHeight,
-        }}
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <StatusBar barStyle={"dark-content"} />
+        <View
+          className="flex-1 px-4 android:pb-4"
+          style={{
+            paddingTop: StatusBar.currentHeight,
+          }}
+        >
+          <StatusBar barStyle={"dark-content"} />
 
-        <AuthProvider>
-          <Slot />
-        </AuthProvider>
-      </View>
+          <AuthProvider>
+            <Slot />
+          </AuthProvider>
+        </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
