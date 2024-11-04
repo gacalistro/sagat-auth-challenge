@@ -1,23 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { isAxiosError } from "axios";
 import { router } from "expo-router";
-import { ChevronLeft } from "lucide-react-native";
-import { cssInterop } from "nativewind";
 import { Controller, useForm } from "react-hook-form";
 import { Pressable, Text, View } from "react-native";
 import { z } from "zod";
 import { Button } from "../../components/button";
+import { Icon } from "../../components/icon";
 import { Input } from "../../components/input";
 import { api } from "../../lib/axios";
-
-cssInterop(ChevronLeft, {
-  className: {
-    target: "style",
-    nativeStyleToProp: {
-      color: true,
-    },
-  },
-});
 
 const recoverSchema = z.object({
   email: z.string().email(),
@@ -50,7 +40,7 @@ export default function RecoverPassword() {
         className="flex-row items-center gap-1"
         onPress={() => router.back()}
       >
-        <ChevronLeft size={24} className="text-zinc-500" />
+        <Icon name="ChevronLeft" className="size-6 text-zinc-500" />
         <Text className="font-medium text-zinc-500">Voltar</Text>
       </Pressable>
 
@@ -69,6 +59,7 @@ export default function RecoverPassword() {
             placeholder="E-mail"
             inputMode="email"
             onChangeText={onChange}
+            icon="Mail"
           />
         )}
       />

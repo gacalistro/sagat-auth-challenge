@@ -58,6 +58,7 @@ export default function Login() {
             placeholder="E-mail"
             inputMode="email"
             onChangeText={onChange}
+            icon="Mail"
           />
         )}
       />
@@ -66,7 +67,12 @@ export default function Login() {
         name="password"
         control={control}
         render={({ field: { onChange } }) => (
-          <Input placeholder="Senha" secureTextEntry onChangeText={onChange} />
+          <Input
+            placeholder="Senha"
+            secureTextEntry
+            onChangeText={onChange}
+            icon="Lock"
+          />
         )}
       />
 

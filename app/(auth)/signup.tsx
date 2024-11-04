@@ -50,7 +50,7 @@ export default function SignUp() {
         name="name"
         control={control}
         render={({ field: { onChange } }) => (
-          <Input placeholder="Nome" onChangeText={onChange} />
+          <Input placeholder="Nome" onChangeText={onChange} icon="User" />
         )}
       />
 
@@ -62,6 +62,7 @@ export default function SignUp() {
             placeholder="E-mail"
             inputMode="email"
             onChangeText={onChange}
+            icon="Mail"
           />
         )}
       />
@@ -70,7 +71,12 @@ export default function SignUp() {
         name="password"
         control={control}
         render={({ field: { onChange } }) => (
-          <Input placeholder="Senha" secureTextEntry onChangeText={onChange} />
+          <Input
+            placeholder="Senha"
+            secureTextEntry
+            onChangeText={onChange}
+            icon="Lock"
+          />
         )}
       />
 
